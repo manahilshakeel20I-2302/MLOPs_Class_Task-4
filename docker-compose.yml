@@ -1,0 +1,15 @@
+services:
+  web:
+    build: .
+    volumes:
+      - .:/app  # Mount the current directory
+    ports:
+      - "5000:5000"  # Expose port 5000 for your Flask app
+
+  db:
+    image: nouchka/sqlite3:latest  # Use a simple SQLite image if necessary
+    volumes:
+      - dbdata:/data  # Store your SQLite data in a Docker volume
+
+volumes:
+  dbdata:
